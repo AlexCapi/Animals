@@ -147,12 +147,6 @@
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-5.2.9.tgz#4838bb6319c99e8f5beb08bdfb392ee9a1173766"
 
-"@angular/material@^5.2.4":
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-5.2.4.tgz#9e823798324283d23ea839156fac5bcb73443d55"
-  dependencies:
-    tslib "^1.7.1"
-
 "@angular/platform-browser-dynamic@^5.2.0":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-5.2.9.tgz#86075b7bb694861f722ceda29aae186b045c6b7d"
@@ -348,6 +342,10 @@ amqplib@^0.5.2:
     buffer-more-ints "0.0.2"
     readable-stream "1.x >=1.1.9"
     safe-buffer "^5.0.1"
+
+angular2-materialize@^15.1.10:
+  version "15.1.10"
+  resolved "https://registry.yarnpkg.com/angular2-materialize/-/angular2-materialize-15.1.10.tgz#775ecb4a0b39b5789e3a400e60c67bc48c8534df"
 
 ansi-html@0.0.7:
   version "0.0.7"

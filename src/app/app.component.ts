@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CountriesComponent } from './countries/CountriesComponent';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,5 @@ import { CountriesComponent } from './countries/CountriesComponent';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Animal';
 }

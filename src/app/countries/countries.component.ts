@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AppSettingsModule} from '../app-settings.module';
+import {CountriesService} from '../services/countries.service';
+import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 
-import 'rxjs/add/operator/toPromise';
+import {Country} from '../country';
+import {Countries} from '../countries';
 
 @Component({
   selector: 'app-countries',
@@ -11,23 +12,16 @@ import 'rxjs/add/operator/toPromise';
 })
 export class CountriesComponent implements OnInit {
 
-  private apiUrl = AppSettingsModule.API_ENDPOINT + 'country/list';
-  private token = AppSettingsModule.API_TOKEN;
+  public selectedCountry;
+  countries: Country[];
 
-  constructor(private http: HttpClient) {
+  constructor(private countriesService: CountriesService) {
   }
 
-  getCountries() {
-    return this.http.get(this.apiUrl, {
-      params: {
-        token: this.token,
-      }
-    })
-      .toPromise()
-      .then(response => {
-        console.log(response);
-      })
-      .catch(console.log);
+  getCountries(): void {
+    this.countriesService.getCountries().subscribe(countries => {
+      this.countries = countries.results;
+    });
   }
 
   ngOnInit() {
