@@ -12,6 +12,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AppSettingsModule } from './/app-settings.module';
 import { CountriesComponent } from './countries/countries.component';
 import {CountriesService} from './services/countries.service';
+import {SpeciesService} from './services/species.service';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import {CountriesService} from './services/countries.service';
     AppComponent,
     NavigationComponent,
     FooterComponent,
-    CountriesComponent
+    CountriesComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import {CountriesService} from './services/countries.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [CountriesService],
+  providers: [CountriesService, SpeciesService],
   bootstrap: [AppComponent, NavigationComponent, FooterComponent]
 })
 export class AppModule { }
