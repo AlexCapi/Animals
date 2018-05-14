@@ -14,6 +14,7 @@ import { CountriesComponent } from './countries/countries.component';
 import {CountriesService} from './services/countries.service';
 import {SpeciesService} from './services/species.service';
 import { LoaderComponent } from './loader/loader.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LoaderComponent } from './loader/loader.component';
     NavigationComponent,
     FooterComponent,
     CountriesComponent,
-    LoaderComponent
+    LoaderComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
