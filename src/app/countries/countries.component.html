@@ -1,13 +1,21 @@
-<div class="input-field">
-  <form>
-    <div class="select-wrapper">
-      <select id="country" [(ngModel)]="selectedCountry" (ngModelChange)="change($event)" name="selectedCountry"
-              class="browser-default" required>
-        <option *ngFor="let country of countries" [value]="country.isocode">
-          {{country.country}}
-        </option>
-      </select>
+<div class="row">
+
+  <div class="col s12 m4">
+    <div class="input-field">
+      <form>
+        <div class="select-wrapper">
+          <select id="country" [(ngModel)]="selectedCountry" (ngModelChange)="change($event)" name="selectedCountry"
+                  class="browser-default" required>
+            <option *ngFor="let country of countries" [value]="country.isocode">
+              {{country.country}}
+            </option>
+          </select>
+        </div>
+        <label>Pays</label>
+      </form>
     </div>
-    <label>Pays</label>
-  </form>
+  </div>
+
+  <app-loader></app-loader>
+
 </div>

@@ -1,11 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
+import { AfterViewInit, ViewChild } from '@angular/core';
+
 import {CountriesService} from '../services/countries.service';
 import {SpeciesService} from '../services/species.service';
-import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 
 import {Country} from '../country';
-import {Countries} from '../countries';
 import {Species} from '../species';
+
+import {LoaderComponent} from '../loader/loader.component';
 
 @Component({
   selector: 'app-countries',
@@ -14,6 +17,8 @@ import {Species} from '../species';
 })
 export class CountriesComponent implements OnInit {
 
+  @ViewChild(LoaderComponent)
+  private speciesLoader: LoaderComponent;
   public selectedCountry;
   countries: Country[];
   species: Species[];
@@ -28,8 +33,10 @@ export class CountriesComponent implements OnInit {
   }
 
   change(newCountry): void {
+    this.speciesLoader.toggleVisibility();
     this.speciesService.getSpeciesByCountry(newCountry).subscribe(species => {
       this.species = species;
+      this.speciesLoader.toggleVisibility();
       console.log('species', this.species);
     });
   }
