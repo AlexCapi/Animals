@@ -1,21 +1,46 @@
 <div class="row">
 
   <div class="col s12 m4">
-    <div class="input-field">
-      <form>
-        <div class="select-wrapper">
-          <select id="country" [(ngModel)]="selectedCountry" (ngModelChange)="change($event)" name="selectedCountry"
-                  class="browser-default" required>
-            <option *ngFor="let country of countries" [value]="country.isocode">
-              {{country.country}}
-            </option>
-          </select>
-        </div>
-        <label>Pays</label>
-      </form>
-    </div>
+    <form>
+      <div>
+        <label>Countries</label>
+        <select id="country" class="browser-default" [(ngModel)]="selectedCountry" (ngModelChange)="change($event)"
+                name="selectedCountry">
+          <option *ngFor="let country of countries" [value]="country.isocode">
+            {{country.country}}
+          </option>
+        </select>
+      </div>
+    </form>
   </div>
 
-  <app-loader></app-loader>
+  <div class="col s12 m8">
+    <div *ngIf="species">
+      <table class="striped responsive-table">
+        <thead>
+        <tr>
+          <th (click)="sortSpecies()">
+            <a href="javascript:void(0);">Name
+              <i *ngIf="nameDesc" class="material-icons align-icon">arrow_drop_down</i>
+              <i *ngIf="nameAsc" class="material-icons align-icon">arrow_drop_up</i></a>
+          </th>
+          <th>Sub-species</th>
+          <th>Rank</th>
+          <th>Sub-population</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let animal of species">
+          <td>{{ animal.scientific_name }}</td>
+          <td>{{ animal.subspecies }}</td>
+          <td>{{ animal.rank }}</td>
+          <td>{{ animal.subpopulation }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-loader></app-loader>
+  </div>
 
 </div>

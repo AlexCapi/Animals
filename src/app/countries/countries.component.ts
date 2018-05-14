@@ -19,11 +19,19 @@ export class CountriesComponent implements OnInit {
 
   @ViewChild(LoaderComponent)
   private speciesLoader: LoaderComponent;
-  public selectedCountry;
+  public selectedCountry: String = 'FR';
   countries: Country[];
   species: Species[];
+  public nameAsc: boolean;
+  public nameDesc: boolean;
 
   constructor(private countriesService: CountriesService, private speciesService: SpeciesService) {
+  }
+
+  ngOnInit() {
+    this.getCountries();
+    this.nameAsc = false;
+    this.nameDesc = true;
   }
 
   getCountries(): void {
@@ -35,14 +43,32 @@ export class CountriesComponent implements OnInit {
   change(newCountry): void {
     this.speciesLoader.toggleVisibility();
     this.speciesService.getSpeciesByCountry(newCountry).subscribe(species => {
-      this.species = species;
+      console.log('species', species);
+      this.species = species.result;
       this.speciesLoader.toggleVisibility();
-      console.log('species', this.species);
     });
   }
 
-  ngOnInit() {
-    this.getCountries();
+  sortSpecies(): void {
+    if (this.nameAsc) {
+      this.nameAsc = false;
+      this.nameDesc = true;
+      this.species = this.species.sort(function(a, b) {
+        let textA, textB;
+        textA = a.scientific_name.toUpperCase();
+        textB = b.scientific_name.toUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+    } else {
+      this.nameAsc = true;
+      this.nameDesc = false;
+      this.species = this.species.sort(function(a, b) {
+        let textA, textB;
+        textA = a.scientific_name.toUpperCase();
+        textB = b.scientific_name.toUpperCase();
+        return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+      });
+    }
   }
 
 }
