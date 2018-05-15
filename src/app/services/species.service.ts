@@ -15,7 +15,7 @@ export class SpeciesService {
   }
 
   getSpeciesByCountry(countryCode: string): Observable<SpeciesList> {
-    return this.http.get<Species>(AppSettingsModule.API_ENDPOINT + 'country/getspecies/' + countryCode, {
+    return this.http.get<SpeciesList>(AppSettingsModule.API_ENDPOINT + 'country/getspecies/' + countryCode, {
       params: {
         token: this.token,
       }
